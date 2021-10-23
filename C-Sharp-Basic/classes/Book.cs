@@ -8,6 +8,8 @@ namespace C_Sharp_Basic.classes
 {
     class Book
     {
+        // method overloading => compile time polymorphisim
+        // method overriding => runtime polymorphisim
         public int Id { get; set; }
         public string Title { get; set; }
         public IList<string> Languages { get; set; }
@@ -26,14 +28,13 @@ namespace C_Sharp_Basic.classes
             var lang = string.Empty;
 
             foreach (var language in Languages)
-            {
-                lang += $"{language}";
-                lang += ",";
-            }
-
-            return $"Id: {Id} Title: {Title} Languages: {lang} Price: {Price ?? 0}";
+                lang += $"{language},";
+            
+            return $"Id: {Id} Title: {Title}\n Languages: {lang.TrimEnd(',')}\n Price: {Price ?? 0}";
         }
     }
+
+    //
 }
 
 // class contains data (properties & fields) and behavior (functions/methods) to operate on that data
