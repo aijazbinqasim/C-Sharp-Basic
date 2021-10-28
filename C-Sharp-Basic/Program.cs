@@ -2,6 +2,7 @@
 using C_Sharp_Basic.classes;
 using System.Collections.Generic;
 using System.Collections;
+using System.Linq;
 
 namespace C_Sharp_Basic
 {
@@ -10,24 +11,47 @@ namespace C_Sharp_Basic
         static void Main(string[] args)
         {
 
+            IList<Person> persons = new List<Person>()
+            {
+               new Person() { Id = 1, Name = "Aijaz Ali", Age = 31},
+               new Person() { Id = 2, Name = "Farooque", Age = 20},
+               new Person() { Id = 3, Name = "Ali", Age = 22},
+               new Person() { Id = 4, Name = "Khan", Age = 30}
+            };
+
+            //LINQ query syntax same as SQL SELECT clause...
+            var names = (from p in persons
+                        where p.Age < 31
+                        select p).ToList();
+
+            // LINQ method (short) syntax
+            //var names = persons.Where(x => x.Name.Contains("Khan") || x.Name.Contains("Farooque"));
+            // Console.WriteLine(name);
+
+
+            foreach (var p in names)
+            {
+                Console.WriteLine($"ID: {p.Id} Name: {p.Name} Age: {p.Age}");
+            }
+
             //IList<string> list = new List<string>();
             //list.Add("Farooque");
             //list.Add("Behan");
             //list.Add("Hyd");
             //list.Add("Bcs");
 
-            IList<string> person = new List<string>()
-            {
-                "Farooque",
-                "Aijaz",
-                "Umer",
-                "Khan"
-            };
-            
-            foreach(var p in person)
-            {
-                Console.WriteLine(p);
-            }
+            //IList<string> person = new List<string>()
+            //{
+            //    "Farooque",
+            //    "Aijaz",
+            //    "Umer",
+            //    "Khan"
+            //};
+
+            //foreach(var p in person)
+            //{
+            //    Console.WriteLine(p);
+            //}
 
             //ArrayList list = new ArrayList();
 
